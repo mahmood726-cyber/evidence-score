@@ -1,0 +1,32 @@
+{
+  "title": "EvidenceScore: A Composite Trust Metric for Cochrane Meta-Analyses",
+  "body": "Can a composite trust score reliably grade Cochrane meta-analyses across multiple quality dimensions? We applied five automated detectors to 6,229 meta-analyses from 501 Cochrane systematic reviews, each assessing audit quality, evidence consistency, statistical robustness, prediction stability, and statistical power. A weighted composite combined these dimensions using pre-specified weights of 30%, 20%, 20%, 15%, and 15% respectively, mapping each meta-analysis to a 0-100 trust score and letter grade from A-plus through F. The mean EvidenceScore was 69.0 (SD 9.6, range 35-98), with only 17.4% of meta-analyses achieving grade A or above (score 80 or higher) and 1.9% scoring F below 50. Robustness and stability components were the primary bottlenecks, averaging 43.1 and 41.2 respectively, while audit quality scored highest at 83.3. Most Cochrane meta-analyses achieve moderate trust but fall short of high confidence thresholds. These scores depend entirely on upstream detector accuracy and pre-specified weights that have not been empirically calibrated.",
+  "sentences": [
+    { "role": "Question", "text": "Can a composite trust score reliably grade Cochrane meta-analyses across multiple quality dimensions?" },
+    { "role": "Dataset", "text": "We applied five automated detectors to 6,229 meta-analyses from 501 Cochrane systematic reviews, each assessing audit quality, evidence consistency, statistical robustness, prediction stability, and statistical power." },
+    { "role": "Method", "text": "A weighted composite combined these dimensions using pre-specified weights of 30%, 20%, 20%, 15%, and 15% respectively, mapping each meta-analysis to a 0-100 trust score and letter grade from A-plus through F." },
+    { "role": "Primary result", "text": "The mean EvidenceScore was 69.0 (SD 9.6, range 35-98), with only 17.4% of meta-analyses achieving grade A or above (score 80 or higher) and 1.9% scoring F below 50." },
+    { "role": "Robustness", "text": "Robustness and stability components were the primary bottlenecks, averaging 43.1 and 41.2 respectively, while audit quality scored highest at 83.3." },
+    { "role": "Interpretation", "text": "Most Cochrane meta-analyses achieve moderate trust but fall short of high confidence thresholds." },
+    { "role": "Boundary", "text": "These scores depend entirely on upstream detector accuracy and pre-specified weights that have not been empirically calibrated." }
+  ],
+  "wordCount": 156,
+  "sentenceCount": 7,
+  "outsideNote": {
+    "type": "methods",
+    "primary_estimand": "Composite trust score (0-100)",
+    "app": "EvidenceScore v1.0",
+    "data": "6,229 meta-analyses from 501 Cochrane reviews",
+    "code": "C:\\Models\\EvidenceScore\\",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-04-01",
+    "certainty": "moderate",
+    "validationStatus": "PASS"
+  },
+  "meta": {
+    "created": "2026-04-01",
+    "valid": true,
+    "schemaVersion": "0.2"
+  }
+}

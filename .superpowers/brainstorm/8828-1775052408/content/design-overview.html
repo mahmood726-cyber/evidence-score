@@ -1,0 +1,101 @@
+<h2>EvidenceScore v2.0 — Design Overview</h2>
+<p class="subtitle">Fix + Recalibrate + Enhanced Dashboard</p>
+
+<div class="section">
+  <h3>1. Bug Fix: MA ID Normalization</h3>
+  <div style="background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.2); border-radius:12px; padding:1.2rem; margin:1rem 0;">
+    <p style="margin:0;">Extract <code>review_id + __variant</code> from both formats:<br>
+    <code>CD001155_pub3_data__A5</code> &rarr; <code>CD001155__A5</code><br>
+    <code>CD011381__A1</code> &rarr; <code>CD011381__A1</code> (already normalized)<br><br>
+    Add <code>normalize_ma_id()</code> function. Apply in <code>compute_consistency_score()</code> and at load time.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3>2. Weight Calibration: Sensitivity Analysis</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0;">
+    <div style="background:rgba(126,184,255,0.06); border:1px solid rgba(126,184,255,0.15); border-radius:10px; padding:1rem;">
+      <div style="font-weight:700; color:#7eb8ff; margin-bottom:0.5rem;">Base Weights</div>
+      <div style="font-size:0.85rem; color:#b0b0c8;">
+        Audit: 0.20<br>
+        Consistency: 0.20<br>
+        Robustness: 0.20<br>
+        Stability: 0.20<br>
+        Power: 0.20
+      </div>
+      <div style="font-size:0.75rem; color:#8888a8; margin-top:0.5rem;">Equal weights (no a priori justification for asymmetry)</div>
+    </div>
+    <div style="background:rgba(192,132,252,0.06); border:1px solid rgba(192,132,252,0.15); border-radius:10px; padding:1rem;">
+      <div style="font-weight:700; color:#c084fc; margin-bottom:0.5rem;">Perturbation Scheme</div>
+      <div style="font-size:0.85rem; color:#b0b0c8;">
+        &bull; 50 random weight vectors (Dirichlet)<br>
+        &bull; Kendall's &tau; between base and each<br>
+        &bull; Mean &tau; &gt; 0.85 = robust<br>
+        &bull; Report min/max/mean &tau;
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>3. Dual Grading: Absolute + Percentile</h3>
+  <div style="margin:1rem 0;">
+    <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+      <thead>
+        <tr style="border-bottom:1px solid rgba(126,184,255,0.15);">
+          <th style="text-align:left; padding:0.6rem; color:#7eb8ff;">Grade</th>
+          <th style="text-align:left; padding:0.6rem; color:#7eb8ff;">Absolute Threshold</th>
+          <th style="text-align:left; padding:0.6rem; color:#7eb8ff;">Interpretation</th>
+        </tr>
+      </thead>
+      <tbody style="color:#b0b0c8;">
+        <tr><td style="padding:0.4rem 0.6rem; color:#34d399; font-weight:700;">A+</td><td style="padding:0.4rem 0.6rem;">&ge;90</td><td style="padding:0.4rem 0.6rem;">Highly Trustworthy</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem; color:#7eb8ff; font-weight:700;">A</td><td style="padding:0.4rem 0.6rem;">&ge;80</td><td style="padding:0.4rem 0.6rem;">Trustworthy</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem; color:#c084fc; font-weight:700;">B</td><td style="padding:0.4rem 0.6rem;">&ge;70</td><td style="padding:0.4rem 0.6rem;">Moderately Trustworthy</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem; color:#fbbf24; font-weight:700;">C</td><td style="padding:0.4rem 0.6rem;">&ge;60</td><td style="padding:0.4rem 0.6rem;">Caution Advised</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem; color:#f97316; font-weight:700;">D</td><td style="padding:0.4rem 0.6rem;">&ge;50</td><td style="padding:0.4rem 0.6rem;">Significant Concerns</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem; color:#ef4444; font-weight:700;">F</td><td style="padding:0.4rem 0.6rem;">&lt;50</td><td style="padding:0.4rem 0.6rem;">Unreliable</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem; color:#8888a8; margin-top:0.8rem;"><strong>Plus:</strong> Percentile rank column (0-100th) so readers see relative standing among all 6,229 MAs.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3>4. Enhanced Dashboard</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0;">
+    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(126,184,255,0.08); border-radius:10px; padding:1rem;">
+      <div style="font-weight:600; color:#fff; margin-bottom:0.4rem;">Kept from v1</div>
+      <ul style="font-size:0.82rem; color:#b0b0c8; padding-left:1.2rem; margin:0;">
+        <li>Score histogram</li>
+        <li>Grade pie chart</li>
+        <li>Radar chart per MA</li>
+        <li>Top/Bottom 20 tables</li>
+        <li>Searchable full table</li>
+        <li>Methodology cards</li>
+      </ul>
+    </div>
+    <div style="background:rgba(52,211,153,0.05); border:1px solid rgba(52,211,153,0.15); border-radius:10px; padding:1rem;">
+      <div style="font-weight:600; color:#34d399; margin-bottom:0.4rem;">New in v2</div>
+      <ul style="font-size:0.82rem; color:#b0b0c8; padding-left:1.2rem; margin:0;">
+        <li>Percentile rank column</li>
+        <li>Sensitivity heatmap (50 weight schemes &times; rank stability)</li>
+        <li>Before/After comparison panel</li>
+        <li>Component correlation matrix</li>
+        <li>Score distribution by review</li>
+        <li>"Equal weights" methodology note</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>5. Output Artifacts</h3>
+  <div style="font-size:0.85rem; color:#b0b0c8; line-height:1.7;">
+    <code>results/scores_v2.csv</code> &mdash; 6,229 rows, 12 columns (+ percentile_rank, grade_absolute)<br>
+    <code>results/summary_v2.json</code> &mdash; Updated stats + sensitivity analysis results<br>
+    <code>results/sensitivity.json</code> &mdash; 50 weight vectors + Kendall &tau; for each<br>
+    <code>results/dashboard.html</code> &mdash; Regenerated v2 dashboard<br>
+    <code>results/before_after.json</code> &mdash; v1 vs v2 comparison metrics
+  </div>
+</div>

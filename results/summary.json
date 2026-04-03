@@ -1,0 +1,30 @@
+{
+  "total_scored": 6229,
+  "mean_score": 65.5,
+  "median_score": 64,
+  "std_score": 11.0,
+  "min_score": 19,
+  "max_score": 98,
+  "grade_distribution": {
+    "A+": 71,
+    "A": 674,
+    "B": 1349,
+    "C": 1938,
+    "D": 1926,
+    "F": 271
+  },
+  "component_means": {
+    "audit": 83.3,
+    "consistency": 98.7,
+    "robustness": 43.1,
+    "stability": 41.2,
+    "power": 61.5
+  },
+  "weights": {
+    "audit": 0.2,
+    "consistency": 0.2,
+    "robustness": 0.2,
+    "stability": 0.2,
+    "power": 0.2
+  }
+}

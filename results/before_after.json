@@ -1,0 +1,74 @@
+{
+  "n_mas": 6229,
+  "v1_mean": 69.0,
+  "v2_mean": 65.5,
+  "mean_delta": -3.5,
+  "grade_changes": {
+    "upgraded": 180,
+    "downgraded": 2576,
+    "unchanged": 3473
+  },
+  "top_movers": [
+    {
+      "ma_id": "CD013232_pub2_data__A18",
+      "v1_score": 77,
+      "v2_score": 54,
+      "delta": -23
+    },
+    {
+      "ma_id": "CD013232_pub2_data__A12",
+      "v1_score": 66,
+      "v2_score": 44,
+      "delta": -22
+    },
+    {
+      "ma_id": "CD013232_pub2_data__A3",
+      "v1_score": 68,
+      "v2_score": 46,
+      "delta": -22
+    },
+    {
+      "ma_id": "CD013232_pub2_data__A7",
+      "v1_score": 68,
+      "v2_score": 46,
+      "delta": -22
+    },
+    {
+      "ma_id": "CD013232_pub2_data__A6",
+      "v1_score": 63,
+      "v2_score": 42,
+      "delta": -21
+    },
+    {
+      "ma_id": "CD014965_pub2_data__A13",
+      "v1_score": 86,
+      "v2_score": 65,
+      "delta": -21
+    },
+    {
+      "ma_id": "CD014965_pub2_data__A18",
+      "v1_score": 86,
+      "v2_score": 65,
+      "delta": -21
+    },
+    {
+      "ma_id": "CD014965_pub2_data__A14",
+      "v1_score": 89,
+      "v2_score": 70,
+      "delta": -19
+    },
+    {
+      "ma_id": "CD014965_pub2_data__A19",
+      "v1_score": 72,
+      "v2_score": 53,
+      "delta": -19
+    },
+    {
+      "ma_id": "CD014965_pub2_data__A2",
+      "v1_score": 87,
+      "v2_score": 68,
+      "delta": -19
+    }
+  ],
+  "rank_correlation": 0.9572
+}

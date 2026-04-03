@@ -1,0 +1,60 @@
+<h2>The Consistency Component Bug</h2>
+<p class="subtitle">The root cause and three approaches to fix it</p>
+
+<div class="section">
+  <h3>Current State: What's Broken</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0;">
+    <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:12px; padding:1.2rem;">
+      <div style="font-weight:700; color:#ef4444; margin-bottom:0.5rem;">Scores CSV MA IDs</div>
+      <code style="font-size:0.85rem; color:#a0a0b8;">CD001155_pub3_data__A5</code><br>
+      <code style="font-size:0.85rem; color:#a0a0b8;">CD001909_pub4_data__A1</code>
+    </div>
+    <div style="background:rgba(126,184,255,0.08); border:1px solid rgba(126,184,255,0.3); border-radius:12px; padding:1.2rem;">
+      <div style="font-weight:700; color:#7eb8ff; margin-bottom:0.5rem;">ContradictionMap MA IDs</div>
+      <code style="font-size:0.85rem; color:#a0a0b8;">CD011381__A1</code><br>
+      <code style="font-size:0.85rem; color:#a0a0b8;">CD012186__A2</code>
+    </div>
+  </div>
+  <p style="text-align:center; color:#fbbf24; font-weight:600; margin:1rem 0;">0 / 6,229 MA IDs match &rarr; consistency = 100.0 for ALL &rarr; +20 inflated points per MA</p>
+</div>
+
+<h3>How should we fix this?</h3>
+<p class="subtitle">The fix determines how scores change &mdash; and whether it's just a bugfix or a deeper redesign</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Bugfix Only: Normalize MA IDs</h3>
+      <p>Extract <code>review_id + __variant</code> from both formats to create a common key. Minimal code change (~10 lines). Scores will drop ~20 points on average for contradicted MAs. Keep current 5 components and weights.</p>
+      <div style="margin-top:0.5rem; font-size:0.82rem; color:#8888a8;">
+        <strong>Pro:</strong> Fast, targeted, preserves existing architecture<br>
+        <strong>Con:</strong> Doesn't address arbitrary weights or degenerate component design
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Fix + Recalibrate: Fix bug + justify weights</h3>
+      <p>Fix the ID mismatch, then recalibrate weights empirically. Use sensitivity analysis (vary weights, measure rank stability). Potentially adjust grade thresholds since mean score will drop from 69 to ~49. Add a 6th component (e.g., sample size adequacy separate from power).</p>
+      <div style="margin-top:0.5rem; font-size:0.82rem; color:#8888a8;">
+        <strong>Pro:</strong> Defensible for Lancet Digital Health submission<br>
+        <strong>Con:</strong> More work, need to regenerate all results + dashboard
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Full Redesign: Evidence-based composite</h3>
+      <p>Rebuild scoring from scratch with validated methodology: principal component analysis to derive data-driven weights, external validation against known "fragile" vs "robust" MAs, confidence intervals on scores, and Bland-Altman agreement with expert ratings.</p>
+      <div style="margin-top:0.5rem; font-size:0.82rem; color:#8888a8;">
+        <strong>Pro:</strong> Publishable methodology, novel contribution<br>
+        <strong>Con:</strong> Much larger scope, needs expert ratings dataset
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,61 @@
 {
-  "title": "EvidenceScore: Composite Evidence Quality Scoring Across Multiple Assessment Dimensions",
+  "title": "Untitled E156",
   "slug": "evidencescore",
-  "date": "2026-04-07",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "body": "",
+  "word_count": 0,
+  "sentence_count": 0,
+  "sentences": [],
+  "notes": {
+    "code": "https://github.com/mahmood726-cyber/evidencescore"
+  },
   "type": "methods",
-  "primary_estimand": "Composite evidence quality score (0-100)",
-  "certainty": "",
-  "summary": "Meta-analysis outputs with multi-dimensional quality indicators",
-  "body": "Can a composite score combining statistical robustness, methodological quality, and reporting completeness provide a more comprehensive evidence quality assessment than any single indicator? We developed EvidenceScore implementing weighted aggregation across six quality dimensions: statistical significance and precision, heterogeneity and consistency, publication bias indicators, risk-of-bias profile, GRADE certainty, and fragility index, each scored from zero to one hundred. The composite algorithm applies configurable dimension weights with default equal weighting and generates an overall evidence quality score with dimension-level breakdown and radar chart visualisation. Composite scores showed strong discrimination between meta-analyses classified as high versus low quality by expert panels, with AUC of 0.88 (95% CI 0.83 to 0.92) for the default weighting scheme. Sensitivity analysis across alternative weighting schemes showed composite scores varied by less than 8 points on the hundred-point scale, suggesting robustness to weight specification. Multi-dimensional evidence scoring could supplement single-metric assessments in rapid evidence triage and systematic review prioritisation. The composite weights are heuristic and the score should not be interpreted as a validated measure of evidence trustworthiness.",
-  "sentences": [
-    "Can a composite score combining statistical robustness, methodological quality, and reporting completeness provide a more comprehensive evidence quality assessment than any single indicator?",
-    "We developed EvidenceScore implementing weighted aggregation across six quality dimensions: statistical significance and precision, heterogeneity and consistency, publication bias indicators, risk-of-bias profile, GRADE certainty, and fragility index, each scored from zero to one hundred.",
-    "The composite algorithm applies configurable dimension weights with default equal weighting and generates an overall evidence quality score with dimension-level breakdown and radar chart visualisation.",
-    "Composite scores showed strong discrimination between meta-analyses classified as high versus low quality by expert panels, with AUC of 0.88 (95% CI 0.83 to 0.92) for the default weighting scheme.",
-    "Sensitivity analysis across alternative weighting schemes showed composite scores varied by less than 8 points on the hundred-point scale, suggesting robustness to weight specification.",
-    "Multi-dimensional evidence scoring could supplement single-metric assessments in rapid evidence triage and systematic review prioritisation.",
-    "The composite weights are heuristic and the score should not be interpreted as a validated measure of evidence trustworthiness."
-  ],
-  "study_count": "",
-  "participant_count": ""
+  "primary_estimand": "",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": false,
+        "detail": "Found 0 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 0 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": false,
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": false,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": false,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
 }

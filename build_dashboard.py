@@ -336,7 +336,7 @@ tr:hover td {{
 <div class="es-section">
     <h2>Component Breakdown</h2>
     <p style="color:#8892b0;margin-bottom:15px;">Select a meta-analysis to view its component radar chart.</p>
-    <select class="es-radar-select" id="es-radar-select">
+    <select class="es-radar-select" id="es-radar-select" aria-label="Select meta-analysis for component breakdown">
         <option value="">-- Select MA --</option>
     </select>
     <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;">
